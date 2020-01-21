@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<h1>Crystal Collector</h1>  
+  
+  <div class = "grayBox" id = "instructions">
+  <p>Each crystal has been given a random number value.  Click the crystal to add
+  its value to your total.  If you can match the goal, you win.  If you exceed it,
+  you will lose.  Eitherway, the game will restart. <b>New Feature: Wins and losses will be tracked persistently!
+  However, feel free to clear your stats at any time.</b></p>
+  </div>
+
+<div ng-app="myApp" ng-controller = "myCtrl">
+<div class = "grayBox" id = "playerNumberBox">
+  <span id = "playerNumber">
+  	{{player}}
+  </span>
+  </div>
+
+  <div class = "grayBox" id = "goalNumberBox">
+  <span id = "goalNumber">
+  	{{goal}}
+  </span>
+</div>
+
+  
+  
+ 
+ <div id="gems">
+ <img id ="blueGem" onClick = {{clickGem()}} class = "gem" src = "assets/images/blueGem.png" alt = "blue gem">
+ <img id ="greenGem" class = "gem" src ="assets/images/greenGem.png" alt = "green gem">
+ <img id = "redGem" class = "gem" src = "assets/images/redGem.png" alt = "red gem">
+ <img id = "purpleGem" class = "gem" src = "assets/images/purpleGem.png" alt = "purple gem">
+</div>
+
+<div class = "grayBox" id ="winLossBox">
+Wins: <span id = "wins">0
+  </span>
+  <br>
+
+Losses: <span id = "losses">0
+  </span>
+</div>
+<br>
+<button id = "clear"> Clear Stats?</button>
+
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.player = 0;
+  $scope.goal = Math.floor((Math.random() * 100) + 1);
+  $scope.red = Math.floor((Math.random() * 10) + 1);
+  $scope.blue = Math.floor((Math.random() * 10) + 1);
+  $scope.purple = Math.floor((Math.random() * 10) + 1);
+  $scope.green = Math.floor((Math.random() * 10) + 1);
+  $scope.clickGem = function() {
+    console.log(this.id);
+  };
+});
+</script>
+</body>
+</html>
